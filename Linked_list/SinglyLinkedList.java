@@ -17,10 +17,11 @@ public class SinglyLinkedList{
     }
     public void traversalSinglyLinkedList()
     {
-        while(head != null)
+        Node curNode = head;
+        while(curNode != null)
         {
-            System.out.print(head.value + " ");
-            head = head.next;
+            System.out.print(curNode.value + " ");
+            curNode = curNode.next;
         }
     }
     public Node insertNode(int position, int nodeValue)
@@ -65,4 +66,20 @@ public class SinglyLinkedList{
         size++;
         return head;
     }
+    public int searchNodeValue(int value) {
+        int foundAt = 0;
+        Node current = head;
+        while (current != null) {
+            foundAt++;
+            if (current.value == value) {
+                return foundAt;
+            }
+            else
+            {
+                current = current.next;
+            }
+        }
+        return -1;
+    }
+    
 }

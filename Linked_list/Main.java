@@ -12,6 +12,7 @@ public class Main{
         System.out.println(sLL.head.value);
         System.out.println(sLL.tail.value);
         sLL.traversalSinglyLinkedList();
+        System.out.println(sLL.searchNodeValue(0));
     }
 }
 // 56 3 1 2 54 6  
