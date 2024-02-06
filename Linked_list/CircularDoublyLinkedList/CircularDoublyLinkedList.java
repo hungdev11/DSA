@@ -102,4 +102,40 @@ public class CircularDoublyLinkedList{
         }while(temp != tail.next);
         return -1;
     }
+    public Node deleteNode(int position)
+    {
+        if(position < 1 || position > size)
+        {
+            System.out.println("Invalid position!");
+            return head;
+        }
+        if(head != null)
+        {
+            if(position == 1)
+            {
+                head = head.next;
+                head.prev = tail;
+                tail.next = head;
+            }
+            else if(position == size)
+            {
+                tail = tail.prev;
+                tail.next = head;
+                head.prev = tail;
+            }
+            else
+            {
+                Node temp = head;
+                for(int i = 1; i< position-1; i++)
+                {
+                    temp = temp.next;
+                }
+                Node temp2 = temp.next;
+                temp.next = temp2.next;
+                temp2.next.prev = temp;
+            }
+        }
+        size--;
+        return head;
+    }
 }
