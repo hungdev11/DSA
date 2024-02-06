@@ -115,4 +115,10 @@ public class CircularSinglyLinkedList{
         size--;
         return head;
     }
+    public void deleteAll()
+    {
+        tail.next = null;
+        head = null;
+        tail = null;
+    }
 }
