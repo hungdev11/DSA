@@ -67,6 +67,7 @@ public class CircularDoublyLinkedList{
         if(temp == null)
         {
             System.out.println("Empty linked list!");
+            return;
         }
         do
         {
@@ -137,5 +138,22 @@ public class CircularDoublyLinkedList{
         }
         size--;
         return head;
+    }
+    public void deleteAll()
+    {
+        if(head == null)
+        {
+            System.out.println("List alraedy empty!");
+            return;
+        }
+        Node temp = head;
+        do
+        {
+            temp.prev = null;
+            temp = temp.next;
+        }while(temp != tail.next);
+        tail.next = null;
+        head = tail = null;
+        size = 0;
     }
 }

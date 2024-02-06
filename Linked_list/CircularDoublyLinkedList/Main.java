@@ -11,9 +11,10 @@ public class Main{
         CDLL.traversalCDLL();
         //CDLL.reverseTraversalCDLL();
 
-        CDLL.deleteNode(1);
-        CDLL.deleteNode(3);
-        CDLL.deleteNode(4);
+        //CDLL.deleteNode(1);
+        //CDLL.deleteNode(3);
+        //CDLL.deleteNode(4);
+        CDLL.deleteAll();
         CDLL.traversalCDLL();
         //System.out.println(CDLL.searchANode(6));
         //System.out.println(CDLL.searchANode(-2));
