@@ -10,6 +10,9 @@ public class Main{
         CDLL.insertNode(6, 5);
         CDLL.traversalCDLL();
         CDLL.reverseTraversalCDLL();
+
+        System.out.println(CDLL.searchANode(6));
+        System.out.println(CDLL.searchANode(-2));
         System.out.println(CDLL.size);
 
         //2 3 0 1 6 5

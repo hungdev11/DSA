@@ -89,4 +89,17 @@ public class CircularDoublyLinkedList{
         }while(temp != head.prev);
         System.out.println("\n");
     }
+    public int searchANode(int nodeValue)
+    {
+        Node temp = head;
+        int foundAt = 0;
+        do
+        {
+            foundAt++;
+            if(temp.value == nodeValue)
+                return foundAt;
+            temp = temp.next;
+        }while(temp != tail.next);
+        return -1;
+    }
 }
