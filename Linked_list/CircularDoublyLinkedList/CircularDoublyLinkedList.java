@@ -75,4 +75,18 @@ public class CircularDoublyLinkedList{
         }while(temp != tail.next);
         System.out.println("\n");
     }
+    public void reverseTraversalCDLL()
+    {
+        Node temp = tail;
+        if(temp == null)
+        {
+            System.out.println("Empty linked list!");
+        }
+        do
+        {
+            System.out.print(temp.value + " ");
+            temp = temp.prev;
+        }while(temp != head.prev);
+        System.out.println("\n");
+    }
 }
