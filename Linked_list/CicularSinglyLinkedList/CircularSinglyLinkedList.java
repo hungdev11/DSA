@@ -79,4 +79,40 @@ public class CircularSinglyLinkedList{
         }while(temp != tail.next && temp != null);
         return -1;
     }
+    public Node deleteNodeCSLL(int position)
+    {
+        if(position < 1 || position > size)
+        {
+            System.out.println("Your position you enter is invaid!");
+            return head;
+        }
+        if(head != null)
+        {
+            if(position == 1)
+            {
+                head = head.next;
+                tail.next = head;
+            }
+            else
+            {
+                Node temp = head;
+                for(int i = 1; i<position-1; i++)
+                {
+                    temp = temp.next;
+                }
+                if(position == size)
+                {
+                    temp.next = tail.next;
+                    tail = temp;
+                }
+                else
+                {
+                    Node temp2 = temp.next;
+                    temp.next = temp2.next;
+                }
+            }
+        }
+        size--;
+        return head;
+    }
 }

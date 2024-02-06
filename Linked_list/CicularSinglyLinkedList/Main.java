@@ -10,8 +10,14 @@ public class Main{
         CSLL.insertCSLL(6, 0);
         System.out.println(CSLL.size);
         CSLL.traversalCSLL();
-        System.out.println(CSLL.searchCSLL(2));
-        System.out.println(CSLL.searchCSLL(-1));
+        CSLL.deleteNodeCSLL(1);
+        CSLL.deleteNodeCSLL(2);
+        CSLL.deleteNodeCSLL(4);
+        System.out.println(CSLL.size);
+        CSLL.traversalCSLL();
+
+
+        
 
         //7 6 2 3 4 0
     }
