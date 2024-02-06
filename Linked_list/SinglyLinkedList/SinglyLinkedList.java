@@ -115,4 +115,8 @@ public class SinglyLinkedList{
         }
         return head;
     }
+    public void deleteAll()
+    {
+        head = tail = null;
+    }
 }
