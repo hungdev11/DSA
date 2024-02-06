@@ -11,6 +11,7 @@ public class Main{
         System.out.println(DLL.size);
         DLL.traversalDLL();
         System.out.println(DLL.searchDLL(-2));
+        DLL.reverseTraversalDLL();
         // 7 1 4 2 0 6
     }
 }

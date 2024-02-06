@@ -84,4 +84,14 @@ public class DoublyLinkedList{
         }
         return -1;
     }
+    public void reverseTraversalDLL()
+    {
+        Node temp = tail;
+        while(temp != null)
+        {
+            System.out.print(temp.value + " ");
+            temp = temp.prev;
+        }
+        System.out.println("\n");
+    }
 }
