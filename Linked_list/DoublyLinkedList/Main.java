@@ -10,8 +10,20 @@ public class Main{
         DLL.insertDLL(6, 6);
         System.out.println(DLL.size);
         DLL.traversalDLL();
-        System.out.println(DLL.searchDLL(-2));
-        DLL.reverseTraversalDLL();
+        //System.out.println(DLL.searchDLL(-2));
+        //DLL.reverseTraversalDLL();
+
+        DLL.deleteNode(1);
+        DLL.deleteNode(5);
+        DLL.deleteNode(2);
+        DLL.deleteNode(1);
+        DLL.deleteNode(1);
+        DLL.deleteNode(1);
+
+        DLL.traversalDLL();
+        System.out.println(DLL.size);
+
+
         // 7 1 4 2 0 6
     }
 }
