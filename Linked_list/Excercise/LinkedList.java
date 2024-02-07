@@ -21,6 +21,11 @@ public class LinkedList{
     }
     public void insertNode(int nodeValue)
     {
+        if(head == null)
+        {
+            head = createLinkedList(nodeValue);
+            return;
+        }
         Node newNode = createNode(nodeValue);
         tail.next = newNode;
         tail = newNode;
