@@ -15,14 +15,17 @@ public class Main {
         TreeNode N8 = new TreeNode("N8");
         TreeNode N9 = new TreeNode("N9");
         N4.leftChild = N8; N4.rightChild = N9;
-
+        bt.root = N1;
         System.out.print("PreOrder:\n");
-        bt.preOrder(N1);
+        bt.preOrder(bt.root);
         System.out.print("\nInOrder:\n");
-        bt.inOrder(N1);
+        bt.inOrder(bt.root);
         System.out.print("\nPostOrder:\n");
-        bt.postOrder(N1);
+        bt.postOrder(bt.root);
         System.out.print("\nLevelOrder:\n");
-        bt.levelOrder(N1);
+        bt.levelOrder(bt.root);
+
+        System.out.println(bt.searchNode("N5"));
+        System.out.println(bt.searchNode("N10"));
     }
 }

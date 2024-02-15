@@ -3,7 +3,7 @@ import java.util.Queue;
 
 public class BinaryTree {
     public TreeNode root;
-
+    //Traversal
     public void preOrder(TreeNode root)
     {
         if(root != null)
@@ -44,4 +44,24 @@ public class BinaryTree {
                 nodes.add(currentNode.rightChild);
         }
     }
+    //Search
+    public boolean searchNode(String value)
+    {
+        Queue<TreeNode> nodes = new LinkedList<TreeNode>();
+        nodes.add(root);
+        while(!nodes.isEmpty())
+        {
+            TreeNode currNode = nodes.remove();
+            if(currNode.data.equals(value))
+                return true;
+            if(currNode.leftChild != null)
+                nodes.add(currNode.leftChild);
+            if(currNode.rightChild != null)
+                nodes.add(currNode.rightChild);
+        }
+        return false;
+    }
+    //Insert
+    //Delete node
+    //Delete tree
 }
