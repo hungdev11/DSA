@@ -41,20 +41,20 @@ public class BinaryTree {
         }
     }
     //Search
-    public boolean searchNode(String value)
+    public TreeNode searchNode(String value)
     {
         Queue<TreeNode> nodes = new LinkedList<TreeNode>();
         nodes.add(root);
         while(!nodes.isEmpty()) {
             TreeNode currNode = nodes.remove();
             if(currNode.data.equals(value))
-                return true;
+                return currNode;
             if(currNode.leftChild != null)
                 nodes.add(currNode.leftChild);
             if(currNode.rightChild != null)
                 nodes.add(currNode.rightChild);
         }
-        return false;
+        return null;
     }
     //Insert
     public void insertNode(String data)
@@ -86,5 +86,52 @@ public class BinaryTree {
         }
     }
     //Delete node
+    public TreeNode deepestNode() {
+        Queue<TreeNode> nodes = new LinkedList<TreeNode>();
+        nodes.add(root);
+        TreeNode currNode = null;
+        while (!nodes.isEmpty()) {
+            currNode = nodes.remove();
+            if(currNode.leftChild != null)
+                nodes.add(currNode.leftChild);
+            if(currNode.rightChild != null)
+                nodes.add(currNode.rightChild);
+        }
+        return currNode;
+    }
+    public void deleteDeepestNode() {
+        Queue<TreeNode> nodes = new LinkedList<TreeNode>();
+        nodes.add(root);
+        TreeNode prevNode, currNode = null;
+        while (!nodes.isEmpty()) {
+            prevNode = currNode;
+            currNode = nodes.remove();
+            if (currNode.leftChild == null)
+            {
+                prevNode.rightChild = null;
+                return;
+            } else if (currNode.rightChild == null) {
+                currNode.leftChild = null;
+                return;
+            }
+            nodes.add(currNode.leftChild);
+            nodes.add(currNode.rightChild);
+        }
+    }
+    public void deleteNode(String value) {
+        TreeNode needDel = searchNode(value);
+        if (needDel == null) {
+            System.out.println("Node not found!");
+            return;
+        }
+        else {
+            TreeNode replaceNode = deepestNode();
+            needDel.data = replaceNode.data;
+            deleteDeepestNode();
+        }
+    }
     //Delete tree
+    public void deleteAllTree() {
+        root = null;
+    }
 }
