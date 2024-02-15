@@ -56,4 +56,54 @@ public class BinarySearchTree {
                 nodes.add(node.right);
         }
     }
+    private Node search(Node currNode, int value) {
+        if(currNode == null)
+            return null;
+        else if(currNode.data == value)
+            return currNode;
+        else if(currNode.data >= value)
+            return search(currNode.left, value);
+        else
+            return search(currNode.right, value);
+    }
+    public Node search(int value) {
+        return search(root, value);
+    }
+    public static Node minimumRightSide(Node root) {
+        Node temp = root;
+        while (temp.left != null) {
+            temp = temp.left;
+        }
+        return temp;
+    }
+    private Node deleteNode(Node root, int value) {
+        if (root == null)
+            return root;
+        else if ( value > root.data)
+            root.right = deleteNode(root.right, value);
+        else if (value < root.data)
+            root.left = deleteNode(root.left, value);
+        else {
+            if (root.left != null && root.right != null) {
+                Node replaceNode = minimumRightSide(root.right);
+                root.data = replaceNode.data;
+                root.right = deleteNode(root.right, replaceNode.data);
+            } else if (root.left == null) {
+                root = root.right;
+            } else if (root.left == null) {
+                root = root.left;
+            } else {
+                root = null;
+            }
+        }
+        return root;
+    }
+    public void delete(int value)
+    {
+        root = deleteNode(root, value);
+    }
+    public void deleteAll()
+    {
+        root = null;
+    }
 }

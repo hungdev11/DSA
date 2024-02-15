@@ -20,5 +20,15 @@ public class Main {
         System.out.println("\n");
         bst.levelOrder();
 
+        //System.out.println(bst.search(6).data);
+        //System.out.println(bst.search(10));
+
+        //System.out.println(BinarySearchTree.minimumRightSide(bst.root).data);
+        bst.delete(4);
+        System.out.println("\n");
+        bst.deleteAll();
+        bst.levelOrder();
+
+
     }
 }
