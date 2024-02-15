@@ -17,35 +17,51 @@ public class BinaryTree {
             System.out.println("The BT is full at : " + value);
         }
     }
-    public void preOrder(int rootIndex)
-    {
+    public void preOrder(int rootIndex) {
         if( rootIndex > lastUsedIndex)
             return;
         System.out.print(arr[rootIndex] + " ");
         preOrder(2 * rootIndex);
         preOrder(2 * rootIndex + 1);
     }
-    public void inOrder(int rootIndex)
-    {
+    public void inOrder(int rootIndex) {
         if( rootIndex > lastUsedIndex)
             return;
         inOrder(2 * rootIndex);
         System.out.print(arr[rootIndex] + " ");
         inOrder(2 * rootIndex + 1);
     }
-    public void postOrder(int rootIndex)
-    {
+    public void postOrder(int rootIndex) {
         if( rootIndex > lastUsedIndex)
             return;
         postOrder(2 * rootIndex);
         postOrder(2 * rootIndex + 1);
         System.out.print(arr[rootIndex] + " ");
     }
-    public void levelOrder()
-    {
+    public void levelOrder() {
         for(int i = 1; i <= lastUsedIndex; i++)
         {
             System.out.print(arr[i] + " ");
         }
+    }
+    public int search(String value) {
+        for(int i = 1; i<=lastUsedIndex; i++)
+        {
+            if(arr[i].equals(value))
+                return i;
+        }
+        return -1;
+    }
+    public void delete(String value) {
+        int deleteAt = search(value);
+        if(deleteAt != -1) {
+            arr[deleteAt] = arr[lastUsedIndex--];
+        } else {
+            System.out.println("Not found to delete");
+        }
+    }
+    public void deleteTree() {
+        arr = null;
+        System.out.println("Successfully deleted");
     }
 }
