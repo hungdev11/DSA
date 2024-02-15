@@ -4,10 +4,8 @@ import java.util.Queue;
 public class BinaryTree {
     public TreeNode root;
     //Traversal
-    public void preOrder(TreeNode root)
-    {
-        if(root != null)
-        {
+    public void preOrder(TreeNode root) {
+        if(root != null) {
             System.out.print(root.data + " ");
             preOrder(root.leftChild);
             preOrder(root.rightChild);
@@ -15,8 +13,7 @@ public class BinaryTree {
     }
     public void inOrder(TreeNode root)
     {
-        if(root != null)
-        {
+        if(root != null) {
             inOrder(root.leftChild);
             System.out.print(root.data + " ");
             inOrder(root.rightChild);
@@ -24,8 +21,7 @@ public class BinaryTree {
     }
     public void postOrder(TreeNode root)
     {
-        if(root != null)
-        {
+        if(root != null) {
             postOrder(root.leftChild);
             postOrder(root.rightChild);
             System.out.print(root.data + " ");
@@ -49,8 +45,7 @@ public class BinaryTree {
     {
         Queue<TreeNode> nodes = new LinkedList<TreeNode>();
         nodes.add(root);
-        while(!nodes.isEmpty())
-        {
+        while(!nodes.isEmpty()) {
             TreeNode currNode = nodes.remove();
             if(currNode.data.equals(value))
                 return true;
@@ -62,6 +57,34 @@ public class BinaryTree {
         return false;
     }
     //Insert
+    public void insertNode(String data)
+    {
+        TreeNode node = new TreeNode(data);
+        if(root == null) {
+            root = node;
+            return;
+        }
+        else {
+            Queue<TreeNode> nodes = new LinkedList<TreeNode>();
+            nodes.add(root);
+            while (!nodes.isEmpty()) {
+                TreeNode currNode = nodes.remove();
+                if (currNode.leftChild == null) {
+                    currNode.leftChild = node;
+                    return;
+                }
+                else if (currNode.rightChild == null) {
+                    currNode.rightChild = node;
+                    return;
+                }
+                else
+                {
+                    nodes.add(currNode.leftChild);
+                    nodes.add(currNode.rightChild);
+                }
+            }
+        }
+    }
     //Delete node
     //Delete tree
 }
