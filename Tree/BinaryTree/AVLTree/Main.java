@@ -5,11 +5,11 @@ public class Main {
         at.insert(5);
         at.insert(10);
         at.insert(15);
-        at.levelOrder();
         at.insert(20);
         at.insert(25);
 
-        
+        at.delete(30);
+        at.deleteAll();
         at.levelOrder();
     }
 }

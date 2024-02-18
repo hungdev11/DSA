@@ -85,21 +85,21 @@ public class AVLTree {
             return newNode;
         } else if (node.data < value) {
             node.right = insertNode(node.right, value);
-        } else {
+        } else if (node.data > value) {
             node.left = insertNode(node.left, value);
-        }
+        } else return node;
 
         node.height = setHeight(node);
         int balance = getBalanceNode(node);
 
-        if (balance > 1 && value <= node.left.data) {
+        if (balance > 1 && value < node.left.data) {
             return rotateRight(node);
         } else if (balance > 1 && value > node.left.data) {
             node.left = rotateLeft(node.left);
             return rotateRight(node);
         } else if (balance < -1 && value > node.right.data) {
             return rotateLeft(node);
-        } else if (balance < -1 && value <= node.right.data) {
+        } else if (balance < -1 && value < node.right.data) {
             node.right = rotateRight(node.right);
             return rotateLeft(node);
         }
@@ -107,6 +107,53 @@ public class AVLTree {
     }
     public void insert(int value) {
         root = insertNode(root, value);
+    }
+    public Node minimumRightSide(Node root) {
+        Node temp = root;
+        while (temp.left != null)
+            temp = temp.left;
+        return temp; 
+    }
+    private Node deleteNode(Node root, int value) {
+        if (root == null) 
+            return root;
+        else if ( value > root.data) {
+            root.right = deleteNode(root.right, value);
+        } else if (value < root.data) {
+            root.left = deleteNode(root.left, value);
+        } else {
+            if (root.left != null && root.right != null) {
+                Node replaceNode = minimumRightSide(root.right);
+                root.data = replaceNode.data;
+                root.right = deleteNode(root.right, replaceNode.data);
+            } else if ( root.left == null ) {
+                root = root.right;
+            } else if (root.right == null) {
+                root = root.left;
+            } else {
+                root = null;
+            }
+        }
+        int balance = getBalanceNode(root);
+        if (balance > 1) {
+            if (getBalanceNode(root.left) > 0) {
+                return rotateRight(root);
+            } else {
+                root.left = rotateLeft(root.left);
+                return rotateRight(root);
+            }
+        } else if (balance < -1) {
+            if (getBalanceNode(root.right) < 0) {
+                return rotateLeft(root);
+            } else {
+                root.right = rotateRight(root.right);
+                return rotateLeft(root);
+            }
+        }
+        return root;
+    }
+    public void delete(int value) {
+        root = deleteNode(root, value);
     }
     public void deleteAll()
     {
