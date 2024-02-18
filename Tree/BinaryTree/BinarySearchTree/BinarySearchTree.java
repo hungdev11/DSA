@@ -108,7 +108,7 @@ public class BinarySearchTree {
     }
     private boolean isBinaryUtil(Node root, int minValue, int maxValue) {
         if (root == null) return true;
-        if (root.data < minValue && root.data < maxValue 
+        if (root.data > minValue && root.data < maxValue 
             && isBinaryUtil(root.left, minValue, root.data) 
             && isBinaryUtil(root.right, root.data, maxValue))
             return true;
