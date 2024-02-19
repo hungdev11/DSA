@@ -94,4 +94,7 @@ public class BinaryHeap {
             return extractValue;
         }
     }
+    public void deleteBH() {
+        arr = null;
+    }
 }

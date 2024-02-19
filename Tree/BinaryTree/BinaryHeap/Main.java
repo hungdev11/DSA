@@ -10,6 +10,7 @@ public class Main {
 
         System.out.println(bh.extractTop("Max"));
         //System.out.println(bh.peek());
+        bh.deleteBH();
         bh.levelOrder();
     }
 }
