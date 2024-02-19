@@ -43,7 +43,7 @@ public class BinaryHeap {
         arr[++sizeOfTree] = value;
         heapifyBottomUp(sizeOfTree, type);
     }
-    public void heapifyTopDown(int index, String type) {
+    private void heapifyTopDown(int index, String type) {
         int left = index * 2;
         int right = left + 1;
         int indexGreater = 0;
@@ -90,7 +90,7 @@ public class BinaryHeap {
         else {
             int extractValue = arr[1];
             arr[1] = arr[sizeOfTree--];
-            heapifyTopDown(1, "Min");
+            heapifyTopDown(1, type);
             return extractValue;
         }
     }

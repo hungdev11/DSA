@@ -7,7 +7,9 @@ public class Main {
         bh.insert(15, "Max");
         bh.insert(2, "Max");
         bh.insert(1, "Max");
-        System.out.println(bh.peek());
+
+        System.out.println(bh.extractTop("Max"));
+        //System.out.println(bh.peek());
         bh.levelOrder();
     }
 }
