@@ -28,4 +28,36 @@ public class Trie {
         }
         return currNode.endOfString == true;
     }
+    private boolean delete(TrieNode parentNode, String word, int index) {
+        char ch = word.charAt(index);
+        TrieNode currNode = parentNode.children.get(ch);
+        boolean canThisNodeBeDeleted;
+        if ( currNode.children.size() > 1) {
+            delete(currNode, word, index+1);
+            return false;
+        }
+        if ( index == word.length()-1) {
+            if ( currNode.children.size() >= 1) {
+                currNode.endOfString = false;
+                return false;
+            } else {
+                currNode.children.remove(ch);
+                return true;
+            }
+        }
+        if (currNode.endOfString == true) {
+            delete(currNode, word, index+1);
+            return false;
+        }
+        canThisNodeBeDeleted = delete(currNode, word, index+1);
+        if (canThisNodeBeDeleted) {
+            parentNode.children.remove(ch);
+            return true;
+        } else return false;
+    }
+    public void delete(String word) {
+        if (search(word)) {
+            delete(root, word, 0);
+        }
+    }
 }

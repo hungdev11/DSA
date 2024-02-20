@@ -8,6 +8,8 @@ public class Main {
         te.insert("BH");
 
         System.out.println(te.search("ABI"));
+        te.delete("BLA");
         System.out.println(te.search("BLA"));
+        
     }
 }
