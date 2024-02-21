@@ -11,6 +11,9 @@ public class Main {
         lp.insert("/");
         lp.insert("B");
         lp.insert("/");
+        
+        lp.delete("H");
+        lp.delete("/");
         lp.display();
     }
     
