@@ -33,4 +33,19 @@ public class DirectChaining {
             }
         }
     }
+    public boolean search(String word) {
+        int index = hashfunction(word, hashTable.length);
+        if (hashTable[index] != null && hashTable[index].contains(word))    
+            return true;
+        return false;
+    }
+    public void deleteKey(String word) {
+        int index = hashfunction(word, hashTable.length);
+        boolean found = search(word);
+        if (found) {
+            hashTable[index].remove(word);
+        } else {
+            System.out.println("Not found!" + word);
+        }
+    }
 }
