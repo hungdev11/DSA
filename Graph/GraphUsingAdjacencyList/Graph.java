@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
 
 /**
  * Graph
@@ -31,5 +33,32 @@ public class Graph {
             s.append("\n");
         }
         return s.toString();
+    }
+
+    private void bfsVisit(GraphNode beginNode) {
+        Queue<GraphNode> queue = new LinkedList<GraphNode>();
+        queue.add(beginNode);
+        while (!queue.isEmpty()) {
+            GraphNode currNode = queue.remove();
+            currNode.isVisited = true;
+            if (currNode.index == nodes.size() - 1) {
+                System.out.print(currNode.name);
+            } else {
+                System.out.print(currNode.name + " -> ");
+            }
+            for (GraphNode g : currNode.neighbors) {
+                if (!g.isVisited) {
+                    queue.add(g);
+                    g.isVisited = true;
+                }
+            }
+        }
+    }
+
+    public void bfs() {
+        for (GraphNode g : nodes) {
+            if (!g.isVisited)
+                bfsVisit(g);
+        }
     }
 }
