@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 /**
  * Graph
@@ -75,6 +76,37 @@ public class Graph {
         for (GraphNode g : nodes) {
             if (!g.isVisited) {
                 bfsVisit(g);
+            }
+        }
+    }
+
+    private void dfsVisit(GraphNode firstNode) {
+        Stack<GraphNode> stack = new Stack<>();
+        stack.add(firstNode);
+        int count = 0;
+        while (!stack.isEmpty()) {
+            GraphNode node = stack.pop();
+            node.isVisited = true;
+            count++;
+            if (count != matrix.length) {
+                System.out.print(node.name + " -> ");
+            } else {
+                System.out.print(node.name);
+            }
+            List<GraphNode> neighbors = getNeighbors(node);
+            for (GraphNode g : neighbors) {
+                if (!g.isVisited) {
+                    stack.push(g);
+                    g.isVisited = true;
+                }
+            }
+        }
+    }
+
+    public void dfs() {
+        for (GraphNode g : nodes) {
+            if (!g.isVisited) {
+                dfsVisit(g);
             }
         }
     }

@@ -19,6 +19,7 @@ public class Main {
 
         System.out.println(g.print());
 
-        g.bfs();
+        // g.bfs();
+        g.dfs();
     }
 }
