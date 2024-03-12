@@ -20,6 +20,10 @@ public class Graph {
         second.neighbors.add(first);
     }
 
+    public void addDirectedEdge(int i, int j) {
+        nodes.get(i).neighbors.add(nodes.get(j));
+    }
+
     public String print() {
         StringBuilder s = new StringBuilder();
         s.append("\n");
@@ -89,6 +93,34 @@ public class Graph {
         for (GraphNode g : nodes) {
             if (!g.isVisited)
                 dfsVisit(g);
+        }
+    }
+
+    private void topological(GraphNode beginNode, Stack<GraphNode> stack) {
+        for (GraphNode neighbor : beginNode.neighbors) {
+            if (!neighbor.isVisited) {
+                topological(neighbor, stack);
+            }
+        }
+        beginNode.isVisited = true;
+        stack.push(beginNode);
+    }
+
+    public void topologicalSort() {
+        Stack<GraphNode> stack = new Stack<GraphNode>();
+        for (GraphNode g : nodes) {
+            if (!g.isVisited)
+                topological(g, stack);
+        }
+        int count = -1;
+        while (!stack.isEmpty()) {
+            GraphNode currNode = stack.pop();
+            count++;
+            if (count == nodes.size() - 1) {
+                System.out.print(currNode.name);
+            } else {
+                System.out.print(currNode.name + " -> ");
+            }
         }
     }
 }
