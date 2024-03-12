@@ -22,6 +22,10 @@ public class Graph {
         matrix[j][i] = 1;
     }
 
+    public void addDirected(int i, int j) {
+        matrix[i][j] = 1;
+    }
+
     public String print() {
         StringBuilder s = new StringBuilder();
         s.append("   ");
@@ -107,6 +111,35 @@ public class Graph {
         for (GraphNode g : nodes) {
             if (!g.isVisited) {
                 dfsVisit(g);
+            }
+        }
+    }
+
+    private void topologicalSortVisit(GraphNode beginNode, Stack<GraphNode> stack) {
+        List<GraphNode> neighbors = getNeighbors(beginNode);
+        for (GraphNode neighbor : neighbors) {
+            if (!neighbor.isVisited) {
+                topologicalSortVisit(neighbor, stack);
+            }
+        }
+        beginNode.isVisited = true;
+        stack.push(beginNode);
+    }
+
+    public void topologicalSort() {
+        Stack<GraphNode> stack = new Stack<GraphNode>();
+        for (GraphNode node : nodes) {
+            if (!node.isVisited)
+                topologicalSortVisit(node, stack);
+        }
+        int count = -1;
+        while (!stack.isEmpty()) {
+            GraphNode popNode = stack.pop();
+            count++;
+            if (count != nodes.size() - 1) {
+                System.out.print(popNode.name + " -> ");
+            } else {
+                System.out.println(popNode.name);
             }
         }
     }
