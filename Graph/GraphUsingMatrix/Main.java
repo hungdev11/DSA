@@ -18,5 +18,7 @@ public class Main {
         g.addUndirect(1, 4);
 
         System.out.println(g.print());
+
+        g.bfs();
     }
 }
