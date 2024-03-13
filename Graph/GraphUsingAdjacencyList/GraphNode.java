@@ -8,10 +8,12 @@ public class GraphNode {
     ArrayList<GraphNode> neighbors;
     int index;
     boolean isVisited;
+    GraphNode parent;
 
     GraphNode(String name, int index) {
         this.name = name;
         this.index = index;
         neighbors = new ArrayList<>();
+        parent = null;
     }
 }

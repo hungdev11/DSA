@@ -123,4 +123,31 @@ public class Graph {
             }
         }
     }
+
+    public static void pathPrint(GraphNode node) {
+        if (node.parent != null) {
+            pathPrint(node.parent);
+        }
+        System.out.print(node.name + " ");
+    }
+
+    public void BFSForSSSPP(GraphNode node) { // SSSPP mean "single shortest source path problem"
+        Queue<GraphNode> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            GraphNode popedNode = queue.remove();
+            popedNode.isVisited = true;
+            System.out.println("Path : " + node.name + " -> " + popedNode.name);
+            pathPrint(popedNode);
+            System.out.println("\n");
+            for (GraphNode neighbor : popedNode.neighbors) {
+                if (neighbor.isVisited != true) {
+                    queue.add(neighbor);
+                    neighbor.isVisited = true;
+                    neighbor.parent = popedNode;
+                }
+            }
+        }
+    }
+
 }
