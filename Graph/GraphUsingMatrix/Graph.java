@@ -144,4 +144,31 @@ public class Graph {
         }
     }
 
+    public static void pathPrint(GraphNode node) {
+        if (node.parent != null) {
+            pathPrint(node.parent);
+        }
+        System.out.print(node.name + " ");
+    }
+
+    public void bfsForSSSPP(GraphNode node) {
+        Queue<GraphNode> queue = new LinkedList<>();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            GraphNode currNode = queue.remove();
+            currNode.isVisited = true;
+            System.out.println("Path : " + node.name + " -> " + currNode.name);
+            pathPrint(currNode);
+            System.out.println("\n");
+            List<GraphNode> neighbors = getNeighbors(currNode);
+            for (GraphNode neighbor : neighbors) {
+                if (neighbor.isVisited != true) {
+                    neighbor.isVisited = true;
+                    queue.add(neighbor);
+                    neighbor.parent = currNode;
+                }
+            }
+        }
+    }
+
 }
