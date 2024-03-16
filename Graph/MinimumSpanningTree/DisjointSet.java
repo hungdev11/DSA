@@ -4,7 +4,7 @@ import java.util.List;
 public class DisjointSet {
     private List<WeightedNode> nodesList = new ArrayList<>();
 
-    public static void makeSet(ArrayList<WeightedNode> nodes) {
+    public static void makeSet(List<WeightedNode> nodes) {
         for (WeightedNode node : nodes) {
             DisjointSet set = new DisjointSet();
             set.nodesList.add(node);
@@ -12,7 +12,7 @@ public class DisjointSet {
         }
     }
 
-    public DisjointSet findSet(WeightedNode node) {
+    public static DisjointSet findSet(WeightedNode node) {
         return node.set;
     }
 
