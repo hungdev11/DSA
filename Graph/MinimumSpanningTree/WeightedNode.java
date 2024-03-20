@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class WeightedNode implements Comparable<WeightedNode> {
+public class WeightedNode /* implements Comparable<WeightedNode> */ {
     public String name;
     public List<WeightedNode> neighbors;
     public Map<WeightedNode, Integer> weightMap;
@@ -28,9 +28,11 @@ public class WeightedNode implements Comparable<WeightedNode> {
         return name;
     }
 
-    @Override
-    public int compareTo(WeightedNode o) {
-        return this.distance - o.distance;
-    }
+    /*
+     * @Override
+     * public int compareTo(WeightedNode o) {
+     * return this.distance - o.distance;
+     * }
+     */
 
 }
