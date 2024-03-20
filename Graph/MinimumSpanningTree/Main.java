@@ -10,7 +10,8 @@ public class Main {
         nodes.add(new WeightedNode("D", 3));
         nodes.add(new WeightedNode("E", 4));
 
-        Kruskal g = new Kruskal(nodes);
+        // Kruskal g = new Kruskal(nodes);
+        Prims g = new Prims(nodes);
         g.addWeightedUndirectedEgde(0, 1, 5);
         g.addWeightedUndirectedEgde(0, 2, 13);
         g.addWeightedUndirectedEgde(0, 4, 15);
@@ -19,6 +20,7 @@ public class Main {
         g.addWeightedUndirectedEgde(2, 3, 6);
         g.addWeightedUndirectedEgde(2, 4, 20);
 
-        g.kruskal();
+        // g.kruskal();
+        g.prims(nodes.get(4));
     }
 }
